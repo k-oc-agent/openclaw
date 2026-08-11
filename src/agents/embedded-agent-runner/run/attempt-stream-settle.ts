@@ -90,6 +90,7 @@ type StreamSettleResult = {
   lastAssistant: EmbeddedRunAttemptResult["lastAssistant"];
   currentAttemptAssistant: EmbeddedRunAttemptResult["currentAttemptAssistant"];
   currentAttemptCompletedAssistant: EmbeddedRunAttemptResult["currentAttemptCompletedAssistant"];
+  successfulNestedToolNames: EmbeddedRunAttemptResult["successfulNestedToolNames"];
   attemptUsage: EmbeddedRunAttemptResult["attemptUsage"];
   cacheBreak: PromptCacheBreak | null;
   lastCallUsage: NormalizedUsage | undefined;
@@ -424,6 +425,14 @@ export async function settleEmbeddedAttemptStream(input: {
     lastAssistant,
     currentAttemptAssistant,
     currentAttemptCompletedAssistant,
+    successfulNestedToolNames: [
+      ...new Set(
+        input.toolSearchTargetTranscriptProjections
+          .filter((projection) => !projection.isError)
+          .map((projection) => projection.toolName.trim())
+          .filter(Boolean),
+      ),
+    ],
     attemptUsage,
     cacheBreak,
     lastCallUsage,

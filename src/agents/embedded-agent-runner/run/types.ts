@@ -279,6 +279,8 @@ export type EmbeddedRunAttemptResult = {
     asyncTaskRunId?: string;
     asyncTaskId?: string;
   }>;
+  /** Successful attempt-local target tools hidden behind Tool Search or Code Mode wrappers. */
+  successfulNestedToolNames?: string[];
   acceptedSessionSpawns?: AcceptedSessionSpawn[];
   lastAssistant: AssistantMessage | undefined;
   /**

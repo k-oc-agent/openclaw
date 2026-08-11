@@ -173,6 +173,7 @@ export async function runEmbeddedAttemptSettledPhase(
   let lastAssistant: AssistantMessage | undefined;
   let currentAttemptAssistant: EmbeddedRunAttemptResult["currentAttemptAssistant"];
   let currentAttemptCompletedAssistant: EmbeddedRunAttemptResult["currentAttemptCompletedAssistant"];
+  let successfulNestedToolNames: EmbeddedRunAttemptResult["successfulNestedToolNames"];
   let attemptUsage: NormalizedUsage | undefined;
   let cacheBreak: PromptCacheBreak | null = null;
   let contextBudgetStatus: EmbeddedRunAttemptResult["contextBudgetStatus"];
@@ -447,6 +448,7 @@ export async function runEmbeddedAttemptSettledPhase(
     lastAssistant = settledStream.lastAssistant;
     currentAttemptAssistant = settledStream.currentAttemptAssistant;
     currentAttemptCompletedAssistant = settledStream.currentAttemptCompletedAssistant;
+    successfulNestedToolNames = settledStream.successfulNestedToolNames;
     attemptUsage = settledStream.attemptUsage;
     cacheBreak = settledStream.cacheBreak;
     sessionRuntimeState.promptCache = settledStream.promptCache;
@@ -530,6 +532,7 @@ export async function runEmbeddedAttemptSettledPhase(
       lastAssistant,
       currentAttemptAssistant,
       currentAttemptCompletedAssistant,
+      successfulNestedToolNames,
       attemptUsage,
       promptCache: sessionRuntimeState.promptCache,
       contextBudgetStatus,

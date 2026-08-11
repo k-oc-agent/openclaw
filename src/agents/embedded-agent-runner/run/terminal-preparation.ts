@@ -143,6 +143,14 @@ export function prepareEmbeddedRunTerminal(input: {
         .filter(Boolean),
     ),
   ];
+  const missingNestedToolNames = [
+    ...new Set(
+      (attempt.successfulNestedToolNames ?? []).map((name) => name.trim()).filter(Boolean),
+    ),
+  ]
+    .filter((name) => !successfulToolNames.includes(name))
+    .toSorted();
+  successfulToolNames.push(...missingNestedToolNames);
   Object.assign(agentMeta, {
     terminalReceipt: {
       runId: runParams.runId,

@@ -53,6 +53,7 @@ type EmbeddedAttemptResultState = Pick<
   | "lastAssistant"
   | "currentAttemptAssistant"
   | "currentAttemptCompletedAssistant"
+  | "successfulNestedToolNames"
   | "attemptUsage"
   | "promptCache"
   | "contextBudgetStatus"
@@ -385,6 +386,7 @@ export function completeEmbeddedAttemptResult(
     latestMcpAppChannelView: getLatestMcpAppChannelView(),
     lastAssistantTextMessageIndex: getLastAssistantTextMessageIndex(),
     toolMetas: toolMetasNormalized,
+    successfulNestedToolNames: state.successfulNestedToolNames,
     acceptedSessionSpawns,
     lastToolError,
     didSendViaMessagingTool: didSendViaMessagingTool(),

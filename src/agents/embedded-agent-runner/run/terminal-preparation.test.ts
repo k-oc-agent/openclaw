@@ -257,12 +257,13 @@ describe("prepareEmbeddedRunTerminal run stats", () => {
       attempt: {
         terminalTurnId: "turn-7",
         toolMetas: [
-          { toolName: "started" },
+          { toolName: "exec", isError: false },
           { toolName: "unknown" },
           { toolName: "write", isError: true },
           { toolName: "read", isError: false },
-          { toolName: "read", isError: false },
+          { toolName: "exec", isError: false },
         ],
+        successfulNestedToolNames: ["read", "zeta", "alpha", "Zeta", " exec ", "alpha", " "],
       },
     });
 
@@ -278,7 +279,7 @@ describe("prepareEmbeddedRunTerminal run stats", () => {
         model: "cost-model-rerouted",
         responseModel: "cost-model-rerouted",
       },
-      successfulToolNames: ["read"],
+      successfulToolNames: ["exec", "read", "Zeta", "alpha", "zeta"],
       rerouted: true,
     });
     expect(

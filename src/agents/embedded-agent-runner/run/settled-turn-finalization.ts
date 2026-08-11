@@ -249,6 +249,7 @@ function buildSettledTurnFinalizationAttemptResult(input: {
     currentAttemptAssistant: result.assistant,
     currentAttemptCompletedAssistant: result.assistant,
     toolMetas: settledAttempt.toolMetas,
+    successfulNestedToolNames: settledAttempt.successfulNestedToolNames,
     hasToolMediaBlockReply: false,
     cloudCodeAssistFormatError: false,
     attemptUsage: result.usage,
