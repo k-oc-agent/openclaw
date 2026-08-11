@@ -646,6 +646,7 @@ function completeEmbeddedRun(
 export function copyAttemptDeliveryState(attempt: EmbeddedRunAttemptResult) {
   return {
     latestMcpAppChannelView: attempt.latestMcpAppChannelView,
+    latestMcpConnectAction: attempt.latestMcpConnectAction,
     didSendViaMessagingTool: attempt.didSendViaMessagingTool,
     didDeliverSourceReplyViaMessageTool: attempt.didDeliverSourceReplyViaMessageTool === true,
     didSendDeterministicApprovalPrompt: attempt.didSendDeterministicApprovalPrompt,
